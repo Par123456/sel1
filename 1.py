@@ -1516,7 +1516,7 @@ async def main():
         
                 status = event.pattern_match.group(1)
         
-                 if status in status_rotation:
+                if status in status_rotation:
                 await event.edit("❌ این وضعیت قبلاً در لیست چرخشی وجود دارد")
                     return
             
