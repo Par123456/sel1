@@ -1525,10 +1525,10 @@ async def main():
         # Backup after change
                 backup_data()
         
-               await event.edit(f"✅ وضعیت به لیست چرخشی اضافه شد (تعداد: {len(status_rotation)})")
-           except Exception as e:
+                await event.edit(f"✅ وضعیت به لیست چرخشی اضافه شد (تعداد: {len(status_rotation)})")
+            except Exception as e:
                 logger.error(f"Error in add status handler: {e}")
-               await event.edit(f"❌ خطا: {str(e)}")
+                await event.edit(f"❌ خطا: {str(e)}")
 
         @client.on(events.NewMessage(pattern='^status rotation (on|off)$'))
         async def status_rotation_handler(event):
