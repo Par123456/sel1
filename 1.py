@@ -1510,23 +1510,25 @@ async def main():
             try:
                 if not event.from_id or event.from_id.user_id != (await client.get_me()).id:
                     return
-                    
+        
+        # Declare global variable at the start
                 global status_rotation
+        
                 status = event.pattern_match.group(1)
-                
+        
                 if status in status_rotation:
-                    await event.edit("❌ این وضعیت قبلاً در لیست چرخشی وجود دارد")
+                await event.edit("❌ این وضعیت قبلاً در لیست چرخشی وجود دارد")
                     return
-                    
+            
                 status_rotation.append(status)
-                
-                # Backup after change
+        
+        # Backup after change
                 backup_data()
-                
-                await event.edit(f"✅ وضعیت به لیست چرخشی اضافه شد (تعداد: {len(status_rotation)})")
-            except Exception as e:
+        
+               await event.edit(f"✅ وضعیت به لیست چرخشی اضافه شد (تعداد: {len(status_rotation)})")
+           except Exception as e:
                 logger.error(f"Error in add status handler: {e}")
-                await event.edit(f"❌ خطا: {str(e)}")
+               await event.edit(f"❌ خطا: {str(e)}")
 
         @client.on(events.NewMessage(pattern='^status rotation (on|off)$'))
         async def status_rotation_handler(event):
